@@ -188,7 +188,12 @@ class Options {
 				$value = $this->postprocess_key_defaults( $group, $key );
 			}
 		} else {
-			$value = $this->postprocess_key_defaults( $group, $key );
+			// check on maps
+			if ( isset( self::$map[ $group ] ) && in_array( $key, self::$map[ $group ] ) ) {
+				$value = $this->get_const_value( $group, $key, false );
+			} else {
+				$value = $this->postprocess_key_defaults( $group, $key );
+			}
 		}
 
 		if ( is_string( $value ) ) {
