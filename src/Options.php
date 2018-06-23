@@ -188,9 +188,9 @@ class Options {
 				$value = $this->postprocess_key_defaults( $group, $key );
 			}
 		} else {
-			// check on maps
-			if ( isset( self::$map[ $group ] ) && in_array( $key, self::$map[ $group ] ) ) {
-				$value = $this->get_const_value( $group, $key, false );
+			// Check values against the map.
+			if ( isset( self::$map[ $group ] ) && in_array( $key, self::$map[ $group ], true ) ) {
+				$value = $this->get_const_value( $group, $key, '' );
 			} else {
 				$value = $this->postprocess_key_defaults( $group, $key );
 			}
